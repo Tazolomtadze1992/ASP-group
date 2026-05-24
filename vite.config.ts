@@ -8,15 +8,18 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import { nitro } from "nitro/vite";
 
 // Cloudflare plugin is disabled here so Vercel/Nitro can own the production server output.
-// src/server.ts remains for optional Cloudflare/Wrangler deploys.
+// src/server.cloudflare.ts is only used for optional Cloudflare/Wrangler deploys (wrangler.jsonc).
+// Vercel uses TanStack Start's default server entry + src/start.ts error middleware.
 export default defineConfig({
   cloudflare: false,
-  tanstackStart: {
-    server: { entry: "server" },
-  },
   plugins: [
     nitro({
       preset: "vercel",
+      vercel: {
+        functions: {
+          runtime: "nodejs22.x",
+        },
+      },
     }),
   ],
 });
