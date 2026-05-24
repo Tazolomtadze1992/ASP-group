@@ -1,5 +1,5 @@
 import heroExcavator from "@/assets/hero-excavator.jpg";
-import { Container, Grid, Col } from "@/components/layout";
+import { Container, Grid, Col, NavAlignedContent } from "@/components/layout";
 import { HeroCtaButton } from "./hero-cta-button";
 import { PartnersStrip } from "./partners-strip";
 
@@ -24,20 +24,22 @@ export function Hero() {
 
       <div className="relative z-10 flex min-h-[inherit] flex-1 flex-col">
         <Container className="flex min-h-0 flex-1 flex-col justify-end pt-8 pb-14 sm:pt-10 sm:pb-16 lg:pt-14 lg:pb-20">
-          <Grid>
-            <Col span={12} className="lg:col-span-8">
-              <p className="type-eyebrow text-primary-foreground/55 tracking-[0.22em] mb-4">
-                Serving Georgia Since 2001
-              </p>
-              <h1 className="type-hero-title text-primary-foreground text-pretty">
-                Vehicles, machinery, and hydraulic systems - supplied, serviced, and supported
-                nationwide.
-              </h1>
-              <HeroCtaButton href="/#directions" className="mt-6">
-                Explore our divisions
-              </HeroCtaButton>
-            </Col>
-          </Grid>
+          <NavAlignedContent>
+            <Grid>
+              <Col span={12} className="lg:col-span-8">
+                <p className="type-eyebrow text-primary-foreground/55 tracking-[0.22em] mb-4">
+                  Serving Georgia Since 2001
+                </p>
+                <h1 className="type-hero-title text-primary-foreground text-pretty">
+                  Vehicles, machinery, and hydraulic systems - supplied, serviced, and supported
+                  nationwide.
+                </h1>
+                <HeroCtaButton href="/#directions" className="mt-6">
+                  Explore our divisions
+                </HeroCtaButton>
+              </Col>
+            </Grid>
+          </NavAlignedContent>
         </Container>
 
         <PartnersStrip />

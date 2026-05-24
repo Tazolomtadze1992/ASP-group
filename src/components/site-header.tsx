@@ -2,8 +2,12 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import aspLogo from "@/assets/asp-logo.png";
-import { Container } from "@/components/layout";
+import {
+  Container,
+  HeaderLogo,
+  HeaderLogoSpacer,
+  HEADER_NAV_CLUSTER_CLASS,
+} from "@/components/layout";
 
 type DropItem = { label: string; href: string; search?: Record<string, string> };
 type NavItem = { label: string; href: string; items?: DropItem[] };
@@ -95,14 +99,7 @@ const DIVISION_ACCENT: Record<string, string> = {
   "Body Manufacturing": "#1c374a",
 };
 
-const LOGO_IMG_CLASS = "h-8 lg:h-10 w-auto object-contain";
-const HEADER_NAV_CLUSTER = "flex items-center gap-8 lg:gap-10";
-
-function HeaderLogo({ className, alt = "ASP Group" }: { className?: string; alt?: string }) {
-  return (
-    <img src={aspLogo} alt={alt} className={cn(LOGO_IMG_CLASS, className)} />
-  );
-}
+const HEADER_NAV_CLUSTER = `flex items-center ${HEADER_NAV_CLUSTER_CLASS}`;
 
 export function SiteHeader() {
   const [lang, setLang] = useState<Lang>("GEO");
@@ -176,12 +173,7 @@ export function SiteHeader() {
       <div className="hidden lg:block bg-[#1c374a] shadow-[0_4px_18px_-8px_rgba(26,51,69,0.45)]">
         <Container className="flex h-12 items-stretch">
           <div className={cn(HEADER_NAV_CLUSTER, "h-full items-stretch")}>
-            <span
-              aria-hidden="true"
-              className="pointer-events-none invisible flex shrink-0 items-center"
-            >
-              <HeaderLogo alt="" />
-            </span>
+            <HeaderLogoSpacer />
             <nav className="flex h-full items-stretch">
             {MAIN_NAV.map((item, idx) => {
               const accent = DIVISION_ACCENT[item.label] ?? "#ffffff";

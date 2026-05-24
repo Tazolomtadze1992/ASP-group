@@ -91,6 +91,8 @@
   --section-y-lg: 6rem;
   --section-x: 1.5rem;
   --section-x-lg: 2rem;
+  /* Fine-tune nav-aligned content (hero, sections) left/right vs main nav column */
+  --nav-content-offset-adjust: 0px;
   --header-height: 7rem; /* row1 h-16 (64px) + row2 h-12 (48px) on lg */
 
   /* ASP Group — premium industrial palette */
@@ -225,6 +227,13 @@
   .shadow { box-shadow: var(--shadow-card) !important; }
   .shadow-md { box-shadow: var(--shadow-card) !important; }
   .shadow-lg { box-shadow: var(--shadow-elevated) !important; }
+
+  /* Desktop: shift nav-aligned blocks relative to main nav column */
+  @media (min-width: 1024px) {
+    .nav-aligned-content {
+      margin-inline-start: var(--nav-content-offset-adjust);
+    }
+  }
   .shadow-xl { box-shadow: var(--shadow-elevated) !important; }
 
   .font-mono { font-family: var(--font-mono); }
