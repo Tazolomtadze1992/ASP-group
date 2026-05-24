@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { ChevronDown, Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 import aspLogo from "@/assets/asp-logo.png";
 import { Container } from "@/components/layout";
 
@@ -94,6 +95,15 @@ const DIVISION_ACCENT: Record<string, string> = {
   "Body Manufacturing": "#1c374a",
 };
 
+const LOGO_IMG_CLASS = "h-8 lg:h-10 w-auto object-contain";
+const HEADER_NAV_CLUSTER = "flex items-center gap-8 lg:gap-10";
+
+function HeaderLogo({ className, alt = "ASP Group" }: { className?: string; alt?: string }) {
+  return (
+    <img src={aspLogo} alt={alt} className={cn(LOGO_IMG_CLASS, className)} />
+  );
+}
+
 export function SiteHeader() {
   const [lang, setLang] = useState<Lang>("GEO");
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -112,13 +122,9 @@ export function SiteHeader() {
       {/* Row 1 — Light corporate bar */}
       <div className="bg-[#f9f9fc]/95 backdrop-blur-md border-b border-black/[0.06]">
         <Container className="flex h-14 lg:h-16 items-center justify-between">
-          <div className="flex items-center gap-8 lg:gap-10">
-            <a href="/" aria-label="ASP Group home" className="flex items-center shrink-0">
-              <img
-                src={aspLogo}
-                alt="ASP Group"
-                className="h-8 lg:h-10 w-auto object-contain"
-              />
+          <div className={HEADER_NAV_CLUSTER}>
+            <a href="/" aria-label="ASP Group home" className="flex shrink-0 items-center">
+              <HeaderLogo />
             </a>
 
             <nav className="hidden lg:flex h-full items-center gap-6">
@@ -169,7 +175,14 @@ export function SiteHeader() {
       {/* Row 2 — Industrial dark main nav */}
       <div className="hidden lg:block bg-[#1c374a] shadow-[0_4px_18px_-8px_rgba(26,51,69,0.45)]">
         <Container className="flex h-12 items-stretch">
-          <nav className="flex h-full items-stretch">
+          <div className={cn(HEADER_NAV_CLUSTER, "h-full items-stretch")}>
+            <span
+              aria-hidden="true"
+              className="pointer-events-none invisible flex shrink-0 items-center"
+            >
+              <HeaderLogo alt="" />
+            </span>
+            <nav className="flex h-full items-stretch">
             {MAIN_NAV.map((item, idx) => {
               const accent = DIVISION_ACCENT[item.label] ?? "#ffffff";
               return (
@@ -230,7 +243,8 @@ export function SiteHeader() {
                 </div>
               );
             })}
-          </nav>
+            </nav>
+          </div>
         </Container>
       </div>
 

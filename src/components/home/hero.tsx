@@ -23,7 +23,7 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 flex min-h-[inherit] flex-1 flex-col">
-        <Container className="flex min-h-0 flex-1 flex-col justify-end pt-8 pb-20 sm:pt-10 sm:pb-24 lg:pt-14 lg:pb-28">
+        <Container className="flex min-h-0 flex-1 flex-col justify-end pt-8 pb-14 sm:pt-10 sm:pb-16 lg:pt-14 lg:pb-20">
           <Grid>
             <Col span={12} className="lg:col-span-8">
               <p className="type-eyebrow text-primary-foreground/55 tracking-[0.22em] mb-4">
