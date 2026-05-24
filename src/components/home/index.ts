@@ -1,0 +1,11 @@
+export { Hero } from "./hero";
+export { Certificates } from "./certificates";
+export { PartnersStrip } from "./partners-strip";
+export { Intro } from "./intro";
+export { Directions } from "./directions";
+export { Industries } from "./industries";
+export { WhyChoose } from "./why-choose";
+export { ServiceSection } from "./service-section";
+export { BranchNetwork } from "./branch-network";
+export { LeadSection } from "./lead-section";
+export { FloatingContacts } from "./floating-contacts";
